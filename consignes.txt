@@ -1,0 +1,8 @@
+Tp : réseau sociale avec architecture entièrement mvc et orienté objet (entièrement dockerisé)
+
+Gestion poste
+Gestion rôles
+Gestion commentaires
+Gestion réponses des réponses
+Gestions utilisateurs
+Gestion authentification/autorisation
