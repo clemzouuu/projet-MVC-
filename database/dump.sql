@@ -4,8 +4,6 @@ CREATE TABLE IF NOT EXISTS Users
     username  VARCHAR(255) NOT NULL UNIQUE,
     password  VARCHAR(255) NOT NULL,
     email     VARCHAR(255) NOT NULL,
-    firstName VARCHAR(255),
-    lastName  VARCHAR(255)
 );
 
 CREATE TABLE IF NOT EXISTS Posts

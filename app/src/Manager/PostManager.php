@@ -21,4 +21,8 @@ class PostManager extends BaseManager
 
         return $posts;
     }
+
+    // Partager un post
+
+    // Modifier un poste
 }

@@ -1,0 +1,16 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,500,800);
+
+body {
+    font-family: 'Raleway', Arial, sans-serif;
+    background-color: lightcyan;
+}
+.welcome {
+    font-size: 18px;
+}
+.title {
+    font-size: 36px;
+    color:orange;
+}
+.content {
+    font-weight: bold;
+}

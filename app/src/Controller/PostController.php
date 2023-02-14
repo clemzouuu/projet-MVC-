@@ -10,7 +10,7 @@ use App\Route\Route;
 class PostController extends AbstractController
 {
     // Prend la route, lui donne un nom et attribue une méthode
-    #[Route('/', name: "Homepage", methods: ["GET"])]
+    #[Route('/home', name: "Homepage", methods: ["GET"])]
     public function home()
     {
         $manger = new PostManager(new PDOFactory());
@@ -18,7 +18,7 @@ class PostController extends AbstractController
 
         // Array sert à prendre des parametres et les afficher dans home.php
         // Permet de faire passer des variables du "back" à la vue
-        $this->render("home.php", [
+        $this->render("quickie.php", [
             "posts" => $posts,
         ], "Tous les posts");
     }

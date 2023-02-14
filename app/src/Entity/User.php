@@ -7,13 +7,10 @@ use App\Interfaces\UserInterface;
 
 class User extends BaseEntity implements UserInterface, PasswordProtectedInterface
 {
-    private ?int $id;
+    private int $id;
     private string $username;
     private string $password;
-
     private string $email;
-    private string $firstName;
-    private string $lastName;
 
     /**
      * @return int
@@ -21,24 +18,6 @@ class User extends BaseEntity implements UserInterface, PasswordProtectedInterfa
     public function getId(): int
     {
         return $this->id;
-    }
-
-    /**
-     * @return string
-     */
-    public function getPassword(): string
-    {
-        return $this->password;
-    }
-
-    /**
-     * @param string $password
-     * @return User
-     */
-    public function setPassword(string $password): User
-    {
-        $this->password = $password;
-        return $this;
     }
 
     /**
@@ -52,11 +31,21 @@ class User extends BaseEntity implements UserInterface, PasswordProtectedInterfa
     }
 
     /**
+     * @param string $password
+     * @return User
+     */
+    public function setPassword(string $password): User
+    {
+        $this->password = $password;
+        return $this;
+    }
+
+    /**
      * @return string
      */
-    public function getUsername(): string
+    public function getPassword(): string
     {
-        return $this->username;
+        return $this->password;
     }
 
     /**
@@ -72,9 +61,9 @@ class User extends BaseEntity implements UserInterface, PasswordProtectedInterfa
     /**
      * @return string
      */
-    public function getEmail(): string
+    public function getUsername(): string
     {
-        return $this->email;
+        return $this->username;
     }
 
     /**
@@ -90,60 +79,14 @@ class User extends BaseEntity implements UserInterface, PasswordProtectedInterfa
     /**
      * @return string
      */
-    public function getFirstName(): string
+    public function getEmail(): string
     {
-        return $this->firstName;
-    }
-
-    /**
-     * @param string $firstName
-     * @return User
-     */
-    public function setFirstName(string $firstName): User
-    {
-        $this->firstName = $firstName;
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getLastName(): string
-    {
-        return $this->lastName;
-    }
-
-    /**
-     * @param string $lastName
-     * @return User
-     */
-    public function setLastName(string $lastName): User
-    {
-        $this->lastName = $lastName;
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getGender(): string
-    {
-        return $this->gender;
-    }
-
-    /**
-     * @param string $gender
-     * @return User
-     */
-    public function setGender(string $gender): User
-    {
-        $this->gender = $gender;
-        return $this;
+        return $this->email;
     }
 
     public function getHashedPassword(): string
     {
-        return $this->password;
+        return md5($this->password);
     }
 
     public function passwordMatch(string $plainPwd): bool

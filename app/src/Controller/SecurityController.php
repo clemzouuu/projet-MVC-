@@ -33,11 +33,11 @@ class SecurityController extends AbstractController
 
 
 
-    #[Route('/logged-success', name: "user-logged", methods: ["GET"])]
+    #[Route('/', name: "logged", methods: ["GET"])]
     public function loggedUser()
     {
-        $this->render("/showUsers.php", ["titre" => "Nappy",
-            "content" => 'Amusez vous et partagez ensemble toutes vos aventures !😊'], "Page utilisateur");
+        $this->render("/quickie.php", ["titre" => "Quickie",
+            "content" => 'Partagez votre ressenti !😊'], "Page utilisateur");
     }
 
     #[Route('/register', name: "register", methods: ["GET"])]
@@ -52,15 +52,11 @@ class SecurityController extends AbstractController
 
         $username = $_POST['username'];
         $password = $_POST["password"];
-        $firstname= $_POST['firstname'];
-        $lastname= $_POST['lastname'];
         $email = $_POST['email'];
         $userManager = new UserManager(new PDOFactory());
         $newUser = new User();
-        $newUser->setFirstName($firstname);
-        $newUser->setLastName($lastname);
         $newUser->setUsername($username);
-        $newUser->setPassword(md5($password));
+        $newUser->setPassword($password);
         $newUser->setEmail($email);
         $userManager->insertUser($newUser);
         header('Location: /login');

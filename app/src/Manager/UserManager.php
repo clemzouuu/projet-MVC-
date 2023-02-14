@@ -39,12 +39,10 @@ class UserManager extends BaseManager
 
     public function insertUser(User $user)
     {
-        $query = $this->pdo->prepare("INSERT INTO Users (password, username, email, firstname, lastname) VALUES (:password, :username, :email, :firstname, :lastname)");
+        $query = $this->pdo->prepare("INSERT INTO Users (password, username, email) VALUES (:password, :username, :email)");
         $query->bindValue("password", $user->getHashedPassword(), \PDO::PARAM_STR);
         $query->bindValue("username", $user->getUsername(), \PDO::PARAM_STR);
-        $query->bindValue("email", $user->getEmail(), \PDO::PARAM_STR);
-        $query->bindValue("firstname", $user->getFirstName(), \PDO::PARAM_STR);
-        $query->bindValue("lastname", $user->getLastName(), \PDO::PARAM_STR);
+        $query->bindValue("email", $user->getEmail(), \PDO::PARAM_STR);-
         $query->execute();
     }
 }
