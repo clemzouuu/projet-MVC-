@@ -4,6 +4,7 @@ use App\Route\Route;
 
 require_once 'vendor/autoload.php';
 
+// Répertoire où se trouvent les contrôleurs
 $controllerDir = dirname(__FILE__) . '/src/Controller';
 $dirs = scandir($controllerDir);
 $controllers = [];
@@ -12,6 +13,7 @@ foreach ($dirs as $dir) {
     if ($dir === "." || $dir === "..") {
         continue;
     }
+    // Ajout du contrôleur à la liste des contrôleurs
     $controllers[] = "App\\Controller\\" . pathinfo($controllerDir . DIRECTORY_SEPARATOR . $dir)['filename'];
 }
 
@@ -31,6 +33,7 @@ foreach ($controllers as $controller) {
     }
 }
 
+// Recupérer l'URL demandée
 $url = "/" . trim(explode("?", $_SERVER['REQUEST_URI'])[0], "/");
 
 foreach ($routesObj as $route) {

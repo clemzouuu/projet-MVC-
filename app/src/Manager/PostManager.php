@@ -23,9 +23,8 @@ class PostManager extends BaseManager
     }
 
     public function insertPost(Post $post) {
-        $query = $this->pdo->prepare("INSERT INTO Posts (content,author) VALUES (:content,:username)");
+        $query = $this->pdo->prepare("INSERT INTO Posts (content,author) VALUES (:content,1)");
         $query->bindValue("content", $post->getContent(), \PDO::PARAM_STR);
-        $query->bindValue("username", $_SESSION["username"], \PDO::PARAM_STR);
         $query->execute();
     }
 
