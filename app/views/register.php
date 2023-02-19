@@ -1,3 +1,11 @@
+<?php
+if(session_start()){
+    session_destroy();
+}
+$_SESSION["connecte"] = false;
+
+?>
+
 <!doctype html>
 <html lang="fr">
 <head>
@@ -9,7 +17,6 @@
     <title>Quickie</title>
 </head>
 <body>
-<button><a href="/"> Home </a></button>
 
 <div id="login-form">
     <h2 class="header">Création de compte</h2>
@@ -23,8 +30,6 @@
             <br>
             <label for="password"><b>Mot de passe</b></label>
             <input type="password" placeholder="Entrer le mot de passe" id="password" name="password" required>
-            <br>
-
             <br>
 
             <input type="submit" id='submit' value='Créer le compte'>

@@ -1,3 +1,11 @@
+<?php
+if(session_start()){
+    session_destroy();
+}
+$_SESSION["connecte"] = false;
+
+?>
+
 <!doctype html>
 <html lang="fr">
 <head>
@@ -10,10 +18,8 @@
 </head>
 <body>
 
-<button><a href="/"> Home </a></button>
-<br>
 <div id="login-form">
-    <h2 class="header">Login</h2>
+    <h2 class="header">Connexion</h2>
     <div>
         <form action="/logged" method="POST">
             <label for="username"><b>Nom d'utilisateur</b></label>
@@ -22,7 +28,7 @@
             <label for="password"><b>Mot de passe</b></label>
             <input type="password" placeholder="Entrer le mot de passe" id="password" name="password" required>
             <br>
-            <input type="submit" name="submit" id='submit' value='LOGIN' >
+            <input type="submit" name="submit" id='submit' value='Valider' >
             <br>
             <a href="/register">Vous n'avez pas de compte ? Inscrivez-vous</a>
 

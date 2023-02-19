@@ -1,35 +1,31 @@
-<!doctype html>
-<html lang="fr" xmlns="http://www.w3.org/1999/html">
+<?php
+if(session_start()){
+    session_destroy();
+}
+$_SESSION["connecte"] = false;
+
+?>
+
+<!DOCTYPE html>
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Page utilisateur connecté</title>
-
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../src/Styles/quickie.css">
+    <title>Quickie</title>
 </head>
 <body>
-<div class="welcome">
-    <h1>Bienvenue sur
-        <span class="title">
-            <?= $titre; ?>
-        </span>
-    </h1>
-</div>
-<div class="content">
-    <?= $content ?>
-</div>
+    <h1 class="title">Quickie</h1>
+    <h2>Partagez votre pensée</h2>
 
-<button><a href="/">Déconnexion</a></button> <!-- ça renvoit juste à home-->
-</a>
-<br>
-<br>
-<fieldset><!--Formulaire de création de posts à faire-->
-    <form method="POST">
-        <input type="text" name="comment" id="submit" placeholder="Exprimez vous !"/>
-        <input type="submit" value="Envoyer" id="submit"/>
-    </form>
-    <br>
-    <br>
+    <ul>
+        <li>
+            <a href="/login">Se connecter</a>
+        </li>
+        <li>
+            <a href="/register">S'inscrire</a>
+        </li>
+    </ul>
 </body>
 </html>

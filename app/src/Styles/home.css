@@ -1,38 +1,17 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway:400,500,800);
 
-
-    body {
-        background-color: lightcyan;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-family: 'Raleway', Arial, sans-serif;
-        font-weight: bold;
-    }
-
-    ul {
-        margin: 0;
-        padding: 0;
-        display: flex;
-    }
-
-    li {
-        list-style: none;
-    }
-
-    a {
-        position: relative;
-        display: block;
-        margin: 0 10px;
-        padding: 5px 10px;
-        color: #333;
-        background: lightcyan;
-        transition: background 0.5s ease-in-out;
-        font-size: 30px;
-        text-decoration: none;
-        text-transform: uppercase;
-    }
-    a:hover {
-        background-color:orange;
-    }
+body {
+    font-family: 'Raleway', Arial, sans-serif;
+    background-color: lightcyan;
+}
+.welcome {
+    font-size: 18px;
+    display: flex;
+}
+.title {
+    font-size: 36px;
+    color:orange;
+}
+.content {
+    font-weight: bold;
+}

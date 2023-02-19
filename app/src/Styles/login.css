@@ -3,12 +3,13 @@
 body {
     background-color: lightcyan;
 }
+
 form a {
     color:orange;
 }
 #login-form {
     width: 280px;
-    margin: 0 auto;
+    margin: 5% auto 0% auto;
     background-color: #fcfcfc;
     padding: 20px 50px 40px;
     box-shadow: 1px 4px 10px 1px #aaa;

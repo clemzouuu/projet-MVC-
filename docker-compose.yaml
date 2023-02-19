@@ -14,7 +14,7 @@ services:
         image: 'mariadb'
         restart: always
         environment:
-            MYSQL_DATABASE: data
+            MYSQL_DATABASE: Quickie
             MYSQL_ROOT_PASSWORD: password
         volumes:
             # Pour lancer un dump automatiquement au montage du conteneur

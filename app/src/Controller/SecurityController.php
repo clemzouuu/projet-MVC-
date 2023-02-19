@@ -21,23 +21,30 @@ class SecurityController extends AbstractController
             header('Location: /login');
             exit;
         }
-
         if ($user->passwordMatch($formPwd)) {
-            header('Location: /logged-success');
+            session_start();
+            $_SESSION["connecte"] = true;
+            $_SESSION["username"] = $_POST['username'];
+            header('Location: /home');
             exit;
         }
-
-        header('Location: /logged-success');
+        header('Location: /home');
         exit;
     }
 
 
+    #[Route('/login', name: "login", methods: ["GET", "POST"])]
+    public function login()
+    {
+        $this->render("login.php", [], "Connexion");
+    }
 
-    #[Route('/', name: "logged", methods: ["GET"])]
+    #[Route('/', name: "home page", methods: ["GET"])]
     public function loggedUser()
     {
-        $this->render("/quickie.php", ["titre" => "Quickie",
-            "content" => 'Partagez votre ressenti !😊'], "Page utilisateur");
+        $this->render("/quickie.php",
+            [],
+            "Page utilisateur");
     }
 
     #[Route('/register', name: "register", methods: ["GET"])]
@@ -46,20 +53,24 @@ class SecurityController extends AbstractController
         $this->render("/register.php", [], "Créer un compte");
     }
 
-    #[Route('/register-new-user', name: "register", methods: ["POST"])]
+    #[Route('/register-new-user', name: "registed", methods: ["POST"])]
     public function registerNewUser()
     {
-
-        $username = $_POST['username'];
+        $username = htmlentities($_POST['username']);
         $password = $_POST["password"];
+        $sanitizedUsername = filter_input(INPUT_POST,"username",FILTER_SANITIZE_SPECIAL_CHARS);
         $email = $_POST['email'];
         $userManager = new UserManager(new PDOFactory());
         $newUser = new User();
-        $newUser->setUsername($username);
+        $newUser->setUsername($sanitizedUsername);
         $newUser->setPassword($password);
         $newUser->setEmail($email);
-        $userManager->insertUser($newUser);
-        header('Location: /login');
-
+        if($userManager->verifyDuplicates($newUser)){
+            $userManager->insertUser($newUser);
+            session_start();
+            $_SESSION["connecte"] = true;
+            $_SESSION["username"] = $sanitizedUsername;
+            header('Location: /home');
+        }
     }
 }
