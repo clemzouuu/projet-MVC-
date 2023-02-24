@@ -7,4 +7,3 @@ Gestion réponses des réponses
 Gestions utilisateurs
 Gestion authentification/autorisation
 md5
-front end

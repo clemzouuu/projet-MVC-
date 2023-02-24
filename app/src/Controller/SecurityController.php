@@ -7,8 +7,10 @@ use App\Factory\PDOFactory;
 use App\Manager\UserManager;
 use App\Route\Route;
 
+
 class SecurityController extends AbstractController
 {
+
     #[Route('/logged', name: "logged", methods: ["POST"])]
     public function logged()
     {
@@ -24,7 +26,8 @@ class SecurityController extends AbstractController
         if ($user->passwordMatch($formPwd)) {
             session_start();
             $_SESSION["connecte"] = true;
-            $_SESSION["username"] = $_POST['username'];
+            $username = $_POST['username'];
+            setcookie('username', $username);
             header('Location: /home');
             exit;
         }
@@ -69,7 +72,8 @@ class SecurityController extends AbstractController
             $userManager->insertUser($newUser);
             session_start();
             $_SESSION["connecte"] = true;
-            $_SESSION["username"] = $sanitizedUsername;
+            $username = $sanitizedUsername;
+            setcookie('username', $username);
             header('Location: /home');
         }
     }

@@ -4,6 +4,7 @@ namespace App\Manager;
 
 use App\Entity\Post;
 
+
 class PostManager extends BaseManager
 {
     /**
@@ -23,8 +24,11 @@ class PostManager extends BaseManager
     }
 
     public function insertPost(Post $post) {
-        $query = $this->pdo->prepare("INSERT INTO Posts (content,author) VALUES (:content,1)");
+
+        $query = $this->pdo->prepare("INSERT INTO Posts (content,username,id) VALUES (:content,:username,1)");
         $query->bindValue("content", $post->getContent(), \PDO::PARAM_STR);
+        $query->bindValue("username", $post->getUsername(), \PDO::PARAM_STR);
+
         $query->execute();
     }
 

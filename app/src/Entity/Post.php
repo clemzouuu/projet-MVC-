@@ -6,6 +6,60 @@ class Post extends BaseEntity
 {
     private int $id;
     private string $content;
+    private string $username;
+    private int $postId;
+
+    /**
+     * @return int
+     */
+    public function getPostId(): int
+    {
+        return $this->postId;
+    }
+
+    /**
+     * @param int $postId
+     */
+    public function setPostId(int $postId): void
+    {
+        $this->postId = $postId;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCreated(): string
+    {
+        return $this->created;
+    }
+
+    /**
+     * @param string $created
+     */
+    public function setCreated(string $created): void
+    {
+        $this->created = $created;
+    }
+    private string $created;
+
+
+
+
+    /**
+     * @return mixed
+     */
+    public function getUsername(): mixed
+    {
+        return $this->username;
+    }
+
+    /**
+     * @param mixed $username
+     */
+    public function setUsername(mixed $username): void
+    {
+        $this->username = $username;
+    }
 
     /**
      * @return int

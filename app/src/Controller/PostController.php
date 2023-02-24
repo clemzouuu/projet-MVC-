@@ -34,13 +34,10 @@ class PostController extends AbstractController
         $postManager = new PostManager(new PDOFactory());
         $newPost = new Post();
         $newPost->setContent($content);
+        $newPost->setUsername($_COOKIE["username"]);
         $postManager->insertPost($newPost);
         header('Location: /home');
     }
-
-
-
-
 
 
     /**

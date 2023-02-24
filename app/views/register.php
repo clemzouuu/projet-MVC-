@@ -23,7 +23,7 @@ $_SESSION["connecte"] = false;
     <div>
         <form method="POST" action="/register-new-user">
             <label for="username"><b>Nom d'utilisateur</b></label>
-            <input type="text" placeholder="Entrer le nom d'utilisateur" id="username" name="username" required>
+            <input type="text" placeholder="Caractères spéciaux interdits" id="username" name="username" required>
             <br>
             <label for="email"><b>Email</b></label>
             <input type="email" placeholder="Entrer un email" id="email" name="email" required>

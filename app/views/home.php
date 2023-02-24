@@ -5,6 +5,7 @@ if(!$_SESSION["connecte"]){
     header("location: /");
 }
 
+
 ?>
 <!doctype html>
 <html lang="fr" xmlns="http://www.w3.org/1999/html">
@@ -32,32 +33,36 @@ if(!$_SESSION["connecte"]){
         <?= $subtitle ?>
     </div>
 
-
-
 <br>
 <br>
 
-    <fieldset>
-        <form method="POST" action="/insert-new-post">
-            <input type="text" name="content" id="submit" placeholder="Exprimez vous !" minlength="1" maxlength="50"/>
-            <input type="submit" value="Envoyer" id="submit"/>
-        </form>
-    </fieldset>
+    <div class="main">
+        <fieldset>
+            <form method="POST" action="/insert-new-post">
+                <textarea type="text" name="content" id="submit" placeholder="Exprimez vous en 50 caractères!" minlength="1" maxlength="50" class="textarea"></textarea>
+                <input type="submit" value="Envoyer" id="submit"/>
+            </form>
+        </fieldset>
+        <div class="fakeHr"></div>
+        <br>
 
-    <div>
-        <table>
-            <tr>
-                <th>Expression :</th>
-            </tr>
-            <tr>
-                <td>
-                <?php foreach ($posts as $post) { ?>
-                    <?= $post->getContent()?><br>
-                <?php } ?>
-                </td>
-            </tr>
-        </table>
+        <div class="posts">
+            <table>
+                <tr>
+                    <th>Expression :</th>
+                </tr>
+                <tr>
+                    <td>
+                        <?php foreach ($posts as $post) { ?>
+
+                            <?= $post->getUsername()?> :
+                            <?= $post->getContent()?> | à <?= $post->getCreated()?><br>
+
+                        <?php } ?>
+                    </td>
+                </tr>
+            </table>
+        </div>
     </div>
-
 </body>
 </html>
