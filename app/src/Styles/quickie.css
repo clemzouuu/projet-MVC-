@@ -4,16 +4,17 @@ body {
     background-color: lightcyan;
     height: 100vh;
     display: flex;
-    justify-content: center;
     align-items: center;
     font-family: 'Raleway', Arial, sans-serif;
     font-weight: bold;
+    flex-direction: column;
+    margin-top: 10%;
 }
 
 ul {
-    margin: 0;
     padding: 0;
     display: flex;
+    margin-top: 8%;
 }
 
 li {
@@ -34,4 +35,8 @@ a {
 }
 a:hover {
     background-color:orange;
+}
+
+h1 {
+    color:orange;
 }

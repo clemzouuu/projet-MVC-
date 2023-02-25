@@ -39,8 +39,8 @@ if(!$_SESSION["connecte"]){
     <div class="main">
         <fieldset>
             <form method="POST" action="/insert-new-post">
-                <textarea type="text" name="content" id="submit" placeholder="Exprimez vous en 50 caractères!" minlength="1" maxlength="50" class="textarea"></textarea>
-                <input type="submit" value="Envoyer" id="submit"/>
+                <textarea type="text" name="content" id="textarea" placeholder="Exprimez vous en 50 caractères!" minlength="1" maxlength="50" class="textarea"></textarea>
+                <input type="submit" value="Envoyer" id="sendPost" />
             </form>
         </fieldset>
         <div class="fakeHr"></div>
@@ -56,7 +56,25 @@ if(!$_SESSION["connecte"]){
                         <?php foreach ($posts as $post) { ?>
 
                             <?= $post->getUsername()?> :
-                            <?= $post->getContent()?> | à <?= $post->getCreated()?><br>
+                            <?= $post->getContent()?> || <?= $post->getCreated()?><br>
+
+                            <input type="button" class="showForm" value="Répondre"/>
+
+                            <form method="POST" class="hideForm" action="insert-new-comment" name="answers"
+                            >
+                                <input type="text" name="comment" id="formValue" placeholder="Répondre" minlength="1" maxlength="50" class="formValue"/>
+
+                                <input type="submit" value="Envoyer" id="submit" class="sendButton"/>
+
+                                <input type="button" class="hideButton" value="Cacher"/>
+                            </form>
+
+
+                            <?php if($post->getUsername() == $_COOKIE["username"]){
+                                echo "<button class='delete'>Supprimer le message</button><br><br>";
+                            }else{
+                                echo "<br><br>";
+                            } ?>
 
                         <?php } ?>
                     </td>
@@ -64,5 +82,6 @@ if(!$_SESSION["connecte"]){
             </table>
         </div>
     </div>
+<script src="../src/JS/app.js"></script>
 </body>
 </html>

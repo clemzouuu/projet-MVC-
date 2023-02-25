@@ -27,6 +27,8 @@ fieldset{
     width: 100%;
     border: 1px solid rgb(192, 192, 192);
     border-radius: 10px;
+    max-height: 600px;
+    overflow: scroll;
 }
 
 .fakeHr {
@@ -47,4 +49,25 @@ fieldset{
 .textarea{
     max-width: 50%;
     max-height: 100px;
+    min-width:182px;
+    min-height:37px;
+}
+
+.hideForm{
+    display: none;
+}
+
+.showForm, .delete{
+    height: 18px;
+    font-size: 0.6em;
+    cursor: pointer;
+}
+
+#submit{
+    cursor: pointer;
+ }
+
+.sendButton, .hideButton{
+    height: 18px;
+    font-size: 0.6em;
 }

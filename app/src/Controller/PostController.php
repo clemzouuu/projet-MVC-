@@ -6,6 +6,8 @@ use App\Factory\PDOFactory;
 use App\Manager\PostManager;
 use App\Entity\Post;
 use App\Route\Route;
+use App\Manager\CommentManager;
+use App\Entity\Comment;
 
 class PostController extends AbstractController
 {
@@ -38,6 +40,18 @@ class PostController extends AbstractController
         $postManager->insertPost($newPost);
         header('Location: /home');
     }
+
+    #[Route('/insert-new-comment', name: "Homepage", methods: ["POST"])]
+    public function insertNewComment() {
+        $comment = $_POST['comment'];
+        $commentManager = new CommentManager(new PDOFactory());
+        $newComment = new Comment();
+        $newComment->setComment($comment);
+        $newComment->setAuthorUsername($_COOKIE["username"]);
+        $commentManager->insertComment($newComment);
+        header('Location: /home');
+    }
+
 
 
     /**

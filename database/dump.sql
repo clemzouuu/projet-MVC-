@@ -9,17 +9,16 @@ CREATE TABLE IF NOT EXISTS Users
 CREATE TABLE IF NOT EXISTS Posts
 (
     `post_id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    `content` TEXT,
+    `content` TEXT NOT NULL,
     `created` DATETIME DEFAULT CURRENT_TIMESTAMP,
-    `username` VARCHAR(255),
-    `id` INT NOT NULL,
-    CONSTRAINT FK_Id FOREIGN KEY (id) REFERENCES Users(id)
+    `username` VARCHAR(255) NOT NULL,
+    `id` INT NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS Comments (
     `comment_id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    `content` TEXT,
+    `content` TEXT NOT NULL,
     `author_id` INT NOT NULL,
-    `author_username` VARCHAR(255),
+    `author_username` TEXT,
     `created` DATETIME DEFAULT CURRENT_TIMESTAMP
 );

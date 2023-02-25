@@ -8,6 +8,7 @@ class Post extends BaseEntity
     private string $content;
     private string $username;
     private int $postId;
+    private string $created;
 
     /**
      * @return int
@@ -30,7 +31,9 @@ class Post extends BaseEntity
      */
     public function getCreated(): string
     {
-        return $this->created;
+        $phpdate = strtotime( $this->created );
+        $mysqldate = date(  'd M Y '.' à ' .'H:i ', $phpdate );
+        return $mysqldate;
     }
 
     /**
@@ -40,7 +43,6 @@ class Post extends BaseEntity
     {
         $this->created = $created;
     }
-    private string $created;
 
 
 

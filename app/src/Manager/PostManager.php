@@ -32,7 +32,8 @@ class PostManager extends BaseManager
         $query->execute();
     }
 
-    // Partager un post
 
-    // Modifier un poste
+
+
+
 }
